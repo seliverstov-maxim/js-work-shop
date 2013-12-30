@@ -5,7 +5,7 @@ render = function(field){
     var tr = $('<tr></tr>');
     $('#live-field tbody').append(tr);
     for (var j = 0; j < 100; j++){
-      tr.append($('<td>'+(field[i][j] == 1 ? 1 : '_')+'</td>'));
+      tr.append($('<td class="'+(field[i][j] == 1 ? 'red' : 'white')+'">&nbsp;</td>'));
     }
   }
 };
@@ -65,6 +65,6 @@ $(function(){
     setInterval(function(){
       field = life(field);
       render(field);
-    },1000);
+    },700);
 });
 
