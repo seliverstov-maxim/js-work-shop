@@ -1,7 +1,8 @@
-td {
+span {
     width: 5px;
     height: 5px;
-    border: 1px solid;
+    border: 1px solid #000000;
+    display: block;
 }
 
 .black {
@@ -11,3 +12,4 @@ td {
 .white {
     background-color: #ffffff;
 }
+

@@ -24,8 +24,9 @@ draw_field = function(field) {
         var tr = $('<tr></tr>');
         $('tbody').append(tr);
         for( var j = 0; j < field[i].length; j++) {
-            td = $('<td></td>');
+            td = $("<td><a hfre='#' data-row='" + i + "' data-col='" + j + "'><span class='" + (field[i][j] == 1 ? 'black' : 'white') + "'></span></a></td>");
             tr.append(td);
         }
     }
 };
+
