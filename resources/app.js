@@ -1,31 +1,31 @@
 create_field = function() {
-    var rows_count = $('#rows_count').value
-    var cols_count = $('#cols_count').value
+    var rows_count = $('#rows_count').val();
+    var cols_count = $('#cols_count').val();
 
     var field = init_field(cols_count, rows_count);
-
-}
+    draw_field(field);
+};
 
 init_field = function(w, h) {
-    var t_field = []
+    var t_field = [];
     for( var i = 0; i < w; i++) {
-        field[i] = []
+        t_field[i] = [];
         for( var j = 0; j < h; j++) {
-            field[i][j] = 0;
+            t_field[i][j] = 0;
         }
     }
     return t_field;
-}
+};
 
 draw_field = function(field) {
     $('tbody').html('');
 
-    for( var i = 0; i < w; i++) {
+    for( var i = 0; i < field.length; i++) {
         var tr = $('<tr></tr>');
         $('tbody').append(tr);
-        for( var j = 0; j < h; j++) {
-            td = $('<td></td>>')
+        for( var j = 0; j < field[i].length; j++) {
+            td = $('<td></td>');
             tr.append(td);
         }
     }
-}
+};
