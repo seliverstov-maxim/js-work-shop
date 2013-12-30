@@ -18,38 +18,38 @@ init_field = function(w, h) {
 };
 
 update_cell = function(obj) {
-    c = $(obj).data('col')
-    r = $(obj).data('row')
+    c = $(obj).data('col');
+    r = $(obj).data('row');
 
-    field[r][c] = field[r][c] == 1 ? 0 : 1
-    draw_field(field)
-}
+    field[r][c] = field[r][c] == 1 ? 0 : 1;
+    draw_field(field);
+};
 
 next = function() {
-    var t_field = []
+    var t_field = [];
     for (var i = 0; i < field.length; i++){
-        t_field[i] = []
+        t_field[i] = [];
         for (var j = 0; j < field[i].length; j++){
             t_field[i][j] = 0;
             if (count_life_cells(i, j, field) == 3) {
                 t_field[i][j] = 1;
             } else if(count_life_cells(i, j, field) == 2) {
-                t_field[i][j] = field [i][j]
+                t_field[i][j] = field [i][j];
             }
         }
     }
     field = t_field;
     draw_field(field);
-}
+};
 
 start = function() {
-    id = setInterval(function() { next() }, 300);
+    id = setInterval(function() { next(); }, 300);
 
-}
+};
 
 stop = function() {
     clearInterval(id);
-}
+};
 
 count_life_cells = function(x, y, field) {
     var count = 0;
@@ -64,7 +64,7 @@ count_life_cells = function(x, y, field) {
         }
     }
     return count;
-}
+};
 
 draw_field = function(field) {
     $('tbody').html('');
@@ -78,4 +78,3 @@ draw_field = function(field) {
         }
     }
 };
-
