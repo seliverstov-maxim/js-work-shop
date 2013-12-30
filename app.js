@@ -5,7 +5,7 @@ render = function(field){
     var tr = $('<tr></tr>');
     $('#live-field tbody').append(tr);
     for (var j = 0; j < 100; j++){
-      tr.append($('<td>'+field[i][j]+'</td>'));
+      tr.append($('<td>'+(field[i][j] == 1 ? 1 : '_')+'</td>'));
     }
   }
 };
@@ -18,7 +18,11 @@ initField = function() {
             field[i][j] = 0
         }
     }
-    field[50][50] = 1
+    field[50][50] = 1;
+    field[51][51] = 1;
+    field[51][52] = 1;
+    field[50][52] = 1;
+    field[49][52] = 1;
     return field;
 }
 
@@ -27,19 +31,40 @@ life = function(field) {
     for(var i = 0; i < 100; i++){
         new_field[i] = []
         for(var j = 0; j < 100; j++){
-            new_field[i][j] = 0
-            if field[i][j]
+            new_field[i][j] = 0;
+            live_cell_count = count_life_cells(i, j, field);
+            if (live_cell_count == 3){
+              new_field[i][j] = 1
+            } else if (live_cell_count == 2){
+              new_field[i][j] = field[i][j];
+            }
         }
     }
+    return new_field;
 }
 
 count_life_cells = function(x, y, field) {
-
+  var count = 0;
+  for (var i = x-1; i<=x+1; i++){
+    for (var j = y-1; j<=y+1; j++){
+      if ((i == x && j == y) || i < 0 || j < 0){
+        continue;
+      }
+      if (field[i] && field[i][j] == 1){
+        count++;
+      }
+    }
+  }
+  return count;
 }
 
+var field = [];
 $(function(){
-    var field = initField();
+    field = initField();
     render(field);
-
+    setInterval(function(){
+      field = life(field);
+      render(field);
+    },1000);
 });
 
