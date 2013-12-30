@@ -1,3 +1,11 @@
 td {
     border: 1px solid;
 }
+
+.red {
+    background-color: #ff0000;
+}
+
+.white {
+    background-color: #ffffff;
+}
