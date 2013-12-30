@@ -53,9 +53,17 @@ stop = function() {
 
 count_life_cells = function(x, y, field) {
     var count = 0;
+    row_max = field.length;
+    col_max = field[0].length;
     for (var i = x-1; i<=x+1; i++){
         for (var j = y-1; j<=y+1; j++){
-            if ((i == x && j == y) || i < 0 || j < 0 || i >= 100 || j >= 100){
+            i = (i == row_max) ? 0 : i;
+            i = (i<0) ? row_max : i;
+
+            j = (j == col_max) ? 0 : j;
+            j = (j<0) ? col_max : j;
+
+            if (i == x && j == y){
                 continue;
             }
             if (field[i] && field[i][j] == 1){
