@@ -43,11 +43,12 @@ next = function() {
 }
 
 start = function() {
+    id = setInterval(function() { next() }, 300);
 
 }
 
 stop = function() {
-    
+    clearInterval(id);
 }
 
 count_life_cells = function(x, y, field) {
