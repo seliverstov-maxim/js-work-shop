@@ -47,7 +47,7 @@ count_life_cells = function(x, y, field) {
   var count = 0;
   for (var i = x-1; i<=x+1; i++){
     for (var j = y-1; j<=y+1; j++){
-      if ((i == x && j == y) || i < 0 || j < 0){
+      if ((i == x && j == y) || i < 0 || j < 0 || i >= 100 || j >= 100){
         continue;
       }
       if (field[i] && field[i][j] == 1){
